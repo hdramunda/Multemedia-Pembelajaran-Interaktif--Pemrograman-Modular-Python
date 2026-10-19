@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Multimedia Pembelajaran Interaktif: Pemrograman Modular Python</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#eaf3fd;--card:#fff;--tx:#14263a;--mu:#53677c;--ac:#1565c0;--ac2:#dbeafe;--ok:#15803d;--bad:#b91c1c;--hi:#f59e0b;--code:#10202e;--cd:#dcebf7;--bd:#c6d6e8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e1824;--card:#16263a;--tx:#e6eef7;--mu:#9db2c8;--ac:#60a5fa;--ac2:#1e3a5f;--ok:#4ade80;--bad:#f87171;--hi:#fbbf24;--code:#08121b;--bd:#2a4260}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.6 "Segoe UI",system-ui,Arial,sans-serif}
+header{position:relative;overflow:hidden;background:linear-gradient(120deg,var(--h1),var(--h2) 55%,var(--h3));color:#fff;padding:24px 18px 22px;text-align:center}header::after{content:"";position:absolute;inset:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='380' height='100'%3E%3Cg fill='white' fill-opacity='.22' font-family='monospace' font-size='28' font-weight='bold'%3E%3Ctext x='8' y='42'%3E{ }%3C/text%3E%3Ctext x='88' y='82'%3Edef%3C/text%3E%3Ctext x='170' y='38'%3E( )%3C/text%3E%3Ctext x='238' y='80'%3E1010%3C/text%3E%3Ctext x='318' y='40'%3E[ ]%3C/text%3E%3C/g%3E%3C/svg%3E") 0 0/380px 100px repeat}header b,header small{position:relative;z-index:1;text-shadow:0 1px 3px rgba(0,0,0,.25)}header b{font-size:1.4rem}.hi{display:block;margin:0 auto 6px;position:relative;z-index:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}header small{display:block;opacity:.9}
+main{max-width:780px;margin:12px auto;padding:14px;border-radius:24px;border:1px solid var(--bd);background:radial-gradient(var(--dot) 1.4px,transparent 1.5px) 0 0/22px 22px,linear-gradient(180deg,var(--m1),var(--m2))}@media (max-width:800px){main{border-radius:0;border-left:0;border-right:0;margin-top:8px}}
+nav{display:flex;gap:6px;overflow-x:auto;padding:10px 14px;max-width:780px;margin:0 auto}
+nav button{flex:none;font-size:.9rem;padding:8px 12px;min-height:44px}
+nav button.cur{background:var(--ac);color:#fff}
+.pg{height:8px;background:var(--bd);border-radius:6px;margin:0 14px;max-width:752px}.pg i{display:block;height:100%;background:var(--ac);border-radius:6px;transition:width .4s}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 4px 14px rgba(20,60,110,.1);animation:in .35s}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-size:1.5rem;margin:6px 0}h2{font-size:1.25rem;margin:0 0 8px}h3{font-size:1.05rem;margin:10px 0 4px}
+button{font:inherit;cursor:pointer;border:2px solid var(--ac);background:var(--card);color:var(--tx);border-radius:12px;padding:10px 16px;margin:3px;min-height:46px}
+button.p{background:var(--ac);color:#fff}button.ok{background:var(--ok);border-color:var(--ok);color:#fff}button.no{background:var(--bad);border-color:var(--bad);color:#fff}button.sel{background:var(--ac2);border-color:var(--ac)}
+button:disabled{opacity:.55;cursor:not-allowed}
+input[type=text],textarea{width:100%;font:inherit;padding:10px;border:2px solid var(--bd);border-radius:12px;background:var(--bg);color:var(--tx);margin:4px 0 10px}
+input[type=range]{width:100%}select{font:inherit;padding:8px;border-radius:10px}
+pre{background:var(--code);color:var(--cd);padding:12px;border-radius:12px;overflow-x:auto;font:14px/1.6 Consolas,monospace;margin:8px 0}
+pre .hl{background:rgba(250,204,21,.3);display:block}pre .pt{cursor:pointer;border-bottom:2px dotted #facc15;color:#fde68a}
+.info{background:var(--ac2);border-radius:12px;padding:10px 14px;margin:8px 0}
+.fb{font-weight:600;margin:6px 0}.fb.ok{color:var(--ok)}.fb.no{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.mini{border:2px solid var(--bd);border-radius:14px;padding:10px;cursor:pointer}.mini.open{border-color:var(--ac);background:var(--ac2)}
+.mini .d{display:none;font-size:.95rem;margin-top:6px}.mini.open .d{display:block}
+.vars{display:flex;gap:8px;flex-wrap:wrap}.box{border:2px solid var(--ac);border-radius:12px;padding:4px 12px;text-align:center}.box small{display:block;color:var(--mu);font-size:.75rem}
+table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{border:1px solid var(--bd);padding:4px 8px;text-align:left}
+.st{position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:4px 12px;font-size:.85rem;z-index:5}
+footer{text-align:center;color:var(--mu);font-size:.85rem;padding:20px}
+.opt{display:block;width:100%;text-align:left}
+:root{--h1:#0d47a1;--h2:#1976d2;--h3:#4fc3f7;--m1:#f5faff;--m2:#d9eafb;--dot:rgba(21,101,192,.16)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--h1:#0b2545;--h2:#123e7c;--h3:#1b6ca8;--m1:#13253b;--m2:#0e1b2d;--dot:rgba(96,165,250,.16)}}
+</style></head><body>
+<header><svg class="hi" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="52" height="34" rx="4" fill="rgba(255,255,255,.18)"/><path d="M24 54h16M32 43v11"/><path d="M21 21l-6 6 6 6M43 21l6 6-6 6M35 18l-6 18"/></svg><b>Multimedia Pembelajaran Interaktif</b><small>Informatika · Kelas IX · Pemrograman Modular pada Python</small></header>
+<nav id="nav"></nav><div class="pg"><i id="pgb" style="width:0"></i></div>
+<main id="app"></main>
+<div class="st" id="st" hidden></div>
+<footer>Dibuat oleh: Hdr Munda · Guru Informatika-SPAIFA</footer>
+<script>
+const G={guru:"Hdr Munda",mapel:"Informatika",kelas:"IX",materi:"Pemrograman Modular pada Python (Literasi dan Numerasi)"};
+const TJ="Menerapkan prinsip pemrograman modular dengan membuat fungsi atau prosedur dalam program.";
+const $=s=>document.getElementById(s),E=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const rp=n=>"Rp"+Math.round(n).toLocaleString("id-ID");
+let DB=null,DL=null,ADMIN=false,SAVEOK=null;
+const S={uid:null,sid:"",nama:"",kelas:"",mulai:"",menu:0,max:0,mi:0,ans:[],att:[],tq:0,qi:0,ref:null,done:false,busy:false,sub:false};
+const MN=["Masuk","Tujuan","Materi","Latihan","Refleksi"];
+async function init(){try{if(!window.claude||!claude.use)return;DB=await claude.use("db");DL=await claude.use("downloads");const u=await claude.use("user");ADMIN=u?await u.canEdit():false;S.uid=u?await u.id():null;nav();if(!S.nama)render()}catch(e){}}
+// ---------- penyimpanan (dikonfirmasi) ----------
+function setSt(k,m){const e=$("st");e.hidden=!k;e.innerHTML=({busy:"⏳ Menyimpan…",ok:"✅ Tersimpan (dikonfirmasi)",err:"⚠️ Gagal menyimpan: "+(m||""),off:"ℹ️ Penyimpanan tidak aktif"})[k]||""}
+const rec=()=>({sid:S.sid,guru:G.guru,mapel:G.mapel,materi:G.materi,nama:S.nama,kelas:S.kelas,mulai:S.mulai,status:S.att.length&&S.ref?"Selesai":S.att.length?"Latihan selesai":"Sedang belajar",attempts:S.att,refleksi:S.ref,diperbarui:new Date().toISOString()});
+let chain=Promise.resolve();
+function save(){return chain=chain.then(async()=>{if(!DB||!S.uid){setSt("off");return false}setSt("busy");try{await DB.doc("sesi/"+S.uid).set(rec());setSt("ok");return true}catch(e){setSt("err",e&&e.code==="invalid_argument"?"akun Anda belum berhak menulis data (minta guru memberi akses Contributor)":(e&&e.code)||"koneksi");return false}})}
+// ---------- navigasi ----------
+function nav(){$("nav").innerHTML=MN.map((n,i)=>`<button class="${i==S.menu?"cur":""}" ${i>S.max?"disabled":""} onclick="go(${i})">${i+1}. ${n}</button>`).join("")+(ADMIN?`<button class="${S.menu==9?"cur":""}" onclick="go(9)">👩‍🏫 Rekap Guru</button>`:"");
+$("pgb").style.width=(S.menu==9?100:(S.max+(S.menu==S.max?0.5:1))/5*100)+"%"}
+function go(i){S.menu=i;if(i<9)S.max=Math.max(S.max,i);nav();render();scrollTo(0,0)}
+function render(){[M1,M2,M3,M4,M5][S.menu]?[M1,M2,M3,M4,M5][S.menu]():rekap()}
+// ---------- Menu 1 ----------
+function M1(){if(S.nama)return($("app").innerHTML=`<div class="card"><h1>Selamat belajar, ${E(S.nama)}! 🎉</h1><p>Kelas ${E(S.kelas)}. Silakan lanjut ke tujuan pembelajaran.</p><button class="p" onclick="go(1)">Lanjut ➜</button></div>`);
+$("app").innerHTML=`<div class="card"><h1>💻🍛 Misi Kantin Digital</h1><p><b>${G.mapel}</b> · ${G.materi}</p><p>Pembuat MPI: <b>${G.guru}</b></p>
+<label>Nama lengkap</label><input type="text" id="nm" autocomplete="off"><label>Kelas</label><input type="text" id="kl" placeholder="contoh: IX-A">
+<div class="fb no" id="er"></div><button class="p" id="mb">Mulai Belajar</button>
+<div class="info">Nama dan kelas hanya untuk mengenali sesi belajar, bukan akun berkata sandi. ${DB?"":"Catatan: penyimpanan ke database belum aktif pada tampilan ini; hasil tetap bisa diunduh sebagai CSV."}</div></div>`;
+$("mb").onclick=()=>{const n=$("nm").value.trim(),k=$("kl").value.trim();if(!n||!k){$("er").textContent="Nama dan kelas wajib diisi.";return}
+S.nama=n;S.kelas=k;S.mulai=new Date().toISOString();S.sid="S"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);save();go(1)}}
+// ---------- Menu 2 ----------
+function M2(){$("app").innerHTML=`<div class="card"><h2>🎯 Tujuan Pembelajaran</h2><p>Setelah belajar, kamu mampu:</p><div class="info" style="font-size:1.1rem">✅ ${TJ}</div>
+<div class="grid"><div class="mini open">🧩<b> Memecah program</b><div class="d">Membagi program besar menjadi bagian kecil.</div></div><div class="mini open">⚙️<b> Membuat fungsi/prosedur</b><div class="d">Menulis <code>def</code>, parameter, dan <code>return</code>.</div></div><div class="mini open">🔗<b> Menyusun program utama</b><div class="d">Memanggil modul sesuai urutan.</div></div></div>
+<p><b>Manfaatnya:</b> aplikasi besar seperti media sosial dibangun dari bagian-bagian kecil. Kalau kamu paham modul, kamu bisa membangun program yang rapi dan bisa dikerjakan bersama.</p><button class="p" onclick="go(2)">Lanjut ke Materi ➜</button></div>`}
+// ---------- Menu 3 ----------
+function toggles(){document.querySelectorAll(".mini").forEach(m=>m.onclick=()=>m.classList.toggle("open"))}
+const SUB=["Apa itu Modular?","Fungsi, Prosedur, Pustaka","Menulis Fungsi","Program Utama & Modul"];
+function M3(){const i=S.mi,f=[a1,a2,a3,a4][i];$("app").innerHTML=`<div class="card"><small>Submateri ${i+1} dari 4</small><h2>${SUB[i]}</h2><div id="sb"></div></div>
+<div><button ${i?"":"disabled"} onclick="S.mi--;M3()">⬅ Sebelumnya</button><button class="p" onclick="${i<3?"S.mi++;M3();scrollTo(0,0)":"go(3)"}">${i<3?"Berikutnya ➜":"Ke Latihan ➜"}</button></div>`;f();toggles()}
+function a1(){$("sb").innerHTML=`<div class="info">Di kantin, Rani membagi program kasirnya menjadi tiga modul kecil:<br>🧮 <code>hitung_total</code> → 🏷️ <code>hitung_diskon</code> → 🧾 <code>cetak_struk</code></div>
+<p><b>Pemrograman modular</b> adalah cara menulis program dengan membaginya menjadi modul-modul kecil. Setiap modul menangani <b>satu tugas</b>, sehingga program lebih mudah dipahami, diperbaiki, dan dikembangkan. Klik kartu untuk lima manfaatnya:</p>
+<div class="grid">${[["♻️","Reusability","Modul dipakai ulang di program lain tanpa menulis ulang. Contoh: hitung_total dipakai kasir 1 dan kasir 2."],["🔧","Maintainability","Mudah dikelola. Ubah satu modul, perubahan berlaku di seluruh program."],["📈","Scalability","Mudah dikembangkan. Tambah modul baru tanpa mengubah modul lama."],["👀","Readability","Mudah dibaca. Struktur kode rapi dan teratur."],["⏱️","Efisiensi waktu","Tidak menulis ulang kode, jadi pengembangan lebih cepat."]].map(x=>`<div class="mini">${x[0]} <b>${x[1]}</b><div class="d">${x[2]}</div></div>`).join("")}</div>
+<p>Pengembang juga bisa bekerja <b>paralel</b> pada modul berbeda, dan tiap modul dapat diuji terpisah.</p>`}
+function a2(){const it=[["def hitung_diskon(total):\n    return total * 0.1","Fungsi"],["def cetak_struk(total):\n    print(\"Total:\", total)","Prosedur"]];
+$("sb").innerHTML=`<div class="grid"><div class="mini"><b>🧮 Fungsi</b><div class="d">Menerima input, memproses, dan <b>menghasilkan nilai</b> (return). Bisa dipanggil berkali-kali. Contoh: menghitung luas.</div></div><div class="mini"><b>📋 Prosedur</b><div class="d">Menjalankan serangkaian perintah, tidak selalu mengembalikan nilai. Contoh: mencetak struk.</div></div><div class="mini"><b>📚 Pustaka</b><div class="d">Kumpulan fungsi/modul yang sudah ditulis dan dapat dipakai ulang. Modul adalah satuan terkecil pustaka.</div></div></div>
+<h3>Coba golongkan</h3>${it.map((x,i)=>`<pre>${E(x[0])}</pre><div id="c${i}">${["Fungsi","Prosedur"].map(o=>`<button onclick="chk(${i},'${o}','${x[1]}',this)">${o}</button>`).join("")}</div><div class="fb" id="f${i}"></div>`).join("")}`}
+function chk(i,o,a,b){const f=$("f"+i);if(o==a){b.classList.add("ok");f.className="fb ok";f.textContent="✅ Benar! "+(a=="Fungsi"?"Ada return yang menghasilkan nilai.":"Hanya mencetak, tanpa return.")}else{b.classList.add("no");f.className="fb no";f.textContent="Coba lihat ada atau tidaknya return."}}
+function a3(){const P={def:"<b>def</b>: kata kunci untuk membuat fungsi.",nama:"<b>Nama fungsi</b>: pilih nama yang menjelaskan tugasnya.",par:"<b>Parameter</b>: variabel di definisi fungsi yang menerima nilai. Nilai yang dikirim saat memanggil disebut argumen.",ret:"<b>return</b>: mengembalikan hasil ke pemanggil."};
+$("sb").innerHTML=`<p>Klik bagian bertitik kuning:</p><pre><span class="pt" data-k="def">def</span> <span class="pt" data-k="nama">hitung_total</span><span class="pt" data-k="par">(nasi, es_teh)</span>:
+    <span class="pt" data-k="ret">return</span> nasi * 12000 + es_teh * 4000</pre><div class="info" id="inf">👆 Klik salah satu bagian.</div>
+Nasi: <b id="vn">2</b><input type="range" id="n" min="0" max="6" value="2">Es teh: <b id="ve">1</b><input type="range" id="e" min="0" max="6" value="1">
+<pre id="cl"></pre><div class="vars" id="vs"></div><div class="info">Variabel di dalam fungsi disebut <b>variabel lokal</b>, sedangkan yang dibuat di program utama disebut <b>variabel global</b>.</div>`;
+document.querySelectorAll(".pt").forEach(s=>s.onclick=()=>$("inf").innerHTML=P[s.dataset.k]);
+const up=()=>{const n=+$("n").value,e=+$("e").value,t=n*12000+e*4000;$("vn").textContent=n;$("ve").textContent=e;$("cl").textContent=`hasil = hitung_total(${n}, ${e})\nprint(hasil)   # ${t}`;$("vs").innerHTML=[["nasi ←",n],["es_teh ←",e],["return →",rp(t)]].map(v=>`<div class="box"><small>${v[0]}</small><b>${v[1]}</b></div>`).join("")};$("n").oninput=$("e").oninput=up;up()}
+function a4(){$("sb").innerHTML=`<div class="story info">♻️ Kantin punya bank sampah. Siswa menukar sampah menjadi saldo. Modul <code>penukaran.py</code> menyimpan harga dan fungsi hitung, program utama hanya memanggilnya.</div>
+<pre>harga = {"plastik": 500, "kertas": 300, "kaca": 700}
+def hitung(jenis, berat):
+    return harga.get(jenis, 0) * berat</pre>
+<pre>import penukaran
+if __name__ == "__main__":
+    jenis = input("jenis sampah: ").lower()
+    berat = float(input("berat (kg): "))
+    saldo = penukaran.hitung(jenis, berat)
+    print(f"Saldo: Rp {saldo}")</pre>
+Jenis: <select id="j"><option>plastik</option><option selected>kertas</option><option>kaca</option></select> Berat: <b id="vb">25</b> kg<input type="range" id="b" min="1" max="50" value="25">
+<div class="info" id="out"></div>
+<h3>Contoh lain: modul konversi suhu</h3><pre>def c_to_f(celsius):
+    return (celsius * 9/5) + 32</pre>Celsius: <b id="vc">25</b><input type="range" id="c" min="0" max="100" value="25"><div class="info" id="o2"></div>`;
+const H={plastik:500,kertas:300,kaca:700},up=()=>{const j=$("j").value,b=+$("b").value,s=H[j]*b;$("vb").textContent=b;$("out").innerHTML=`Main memanggil <code>penukaran.hitung("${j}", ${b})</code> → ${H[j]} × ${b} = <b>${rp(s)}</b>`;const c=+$("c").value;$("vc").textContent=c;$("o2").innerHTML=`<code>konversi.c_to_f(${c})</code> → ${c}°C = <b>${(c*9/5+32).toFixed(1)}°F</b>`};$("j").onchange=$("b").oninput=$("c").oninput=up;up()}
+// ---------- Menu 4: latihan 15 soal ----------
+const BS=["Benar","Salah"];
+const Q=[
+["Pemrograman modular adalah...",["Menulis seluruh kode dalam satu blok panjang","Membagi program menjadi bagian kecil (modul), tiap modul menangani satu tugas","Menghapus kode yang tidak dipakai","Mengubah program menjadi bahasa mesin"],1,"Setiap modul dirancang untuk satu tugas tertentu."],
+["Modul dapat dipakai di banyak program tanpa menulis ulang kodenya. Manfaat ini disebut...",["Reusability","Maintainability","Scalability","Readability"],0,"Reusability = dapat digunakan kembali."],
+["Satu modul diperbarui dan perubahan otomatis berlaku di seluruh program. Manfaat ini disebut...",["Reusability","Maintainability","Scalability","Readability"],1,"Maintainability = mudah dikelola."],
+["Pengembang dapat bekerja paralel pada modul-modul berbeda.",BS,0,"Pembagian modul memudahkan kerja tim."],
+["Kata kunci Python untuk membuat fungsi adalah...",["return","def","print","import"],1,"def mendefinisikan fungsi."],
+["Apa keluaran kode ini?",["28000","36000","40000","24000"],1,"2 × 12000 + 3 × 4000 = 36000.","def hitung_total(nasi, es_teh):\n    return nasi*12000 + es_teh*4000\nprint(hitung_total(2, 3))"],
+["Prosedur selalu harus mengembalikan nilai dengan return.",BS,1,"Prosedur tidak selalu mengembalikan nilai."],
+["Kode berikut termasuk...",["Fungsi, karena memiliki parameter","Prosedur, karena hanya menjalankan perintah tanpa return","Pustaka","Variabel global"],1,"Hanya mencetak, tanpa return.","def sapa(nama):\n    print(\"Halo\", nama)"],
+["Berapa hasil c_to_f(100)?",["132","212","180","100"],1,"100 × 9/5 + 32 = 180 + 32 = 212.","def c_to_f(celsius):\n    return (celsius * 9/5) + 32"],
+["Variabel di definisi fungsi yang menerima nilai disebut...",["Pustaka","Flowchart","Parameter","Prosedur"],2,"Parameter menerima nilai yang dikirim saat fungsi dipanggil."],
+["Berapa nilai hitung(\"kaca\", 10)?",["700","5000","7000","3000"],2,"harga kaca 700 × 10 = 7000.","harga = {\"plastik\": 500, \"kertas\": 300, \"kaca\": 700}\ndef hitung(jenis, berat):\n    return harga.get(jenis, 0) * berat"],
+["Variabel lokal hanya dikenal di dalam fungsi tempat ia dibuat.",BS,0,"Variabel global dikenal di seluruh program."],
+["Cara memakai modul biner.py di program utama adalah...",["import biner","def biner","return biner","print biner"],0,"import memanggil modul."],
+["Subproses/fungsi pada flowchart dilambangkan dengan...",["Belah ketupat","Jajar genjang","Persegi panjang dengan dua garis vertikal di kiri dan kanan","Oval"],2,"Simbol itu menandai proses terpisah (subprogram)."],
+["Pesan error: TypeError: luas() missing 1 required positional argument: 'l'. Artinya...",["Fungsi luas tidak ada","Argumen kurang: fungsi butuh dua nilai, tetapi hanya diberi satu","Variabel l salah ketik","Fungsi tidak memakai return"],1,"Pemanggilan luas(5) harus diberi dua argumen, misalnya luas(5, 3).","def luas(p, l):\n    return p * l\nhasil = luas(5)"]
+];
+function M4(){if(S.sub)return result();if(!S.ans.length){S.ans=Array(15).fill(null);S.qi=0;S.tq=Date.now()}
+const i=S.qi,q=Q[i],n=S.ans.filter(a=>a!==null).length;
+$("app").innerHTML=`<div class="card"><small>Percobaan ke-${S.att.length+1} · Soal ${i+1}/15 · Terjawab ${n}/15</small><div class="pg" style="margin:6px 0"><i style="width:${n/15*100}%"></i></div><h3>${i+1}. ${E(q[0])}</h3>${q[4]?`<pre>${E(q[4])}</pre>`:""}
+${q[1].map((o,k)=>`<button class="opt ${S.ans[i]===k?"sel":""}" onclick="S.ans[${i}]=${k};M4()">${String.fromCharCode(65+k)}. ${E(o)}</button>`).join("")}
+<div><button ${i?"":"disabled"} onclick="S.qi--;M4()">⬅</button><button ${i<14?"":"disabled"} onclick="S.qi++;M4()">➡</button>
+<button class="p" id="ks" ${n<15||S.busy?"disabled":""} onclick="kirim()">Kirim Latihan</button></div>${n<15?`<div class="fb">Jawab semua soal untuk mengirim.</div>`:""}</div>`}
+async function kirim(){if(S.busy||S.ans.some(a=>a===null))return;S.busy=true;
+const b=S.ans.filter((a,i)=>a===Q[i][2]).length,no=S.att.length+1;
+S.att.push({id:S.sid+"-"+no,no,jumlah:15,benar:b,salah:15-b,nilai:Math.round(b/15*10000)/100,waktu:new Date().toISOString(),durasi:Math.round((Date.now()-S.tq)/1000),jawaban:S.ans.slice()});
+S.sub=true;S.busy=false;result();await save();result()}
+function result(){const a=S.att[S.att.length-1];
+$("app").innerHTML=`<div class="card"><h2>Hasil Latihan (percobaan ${a.no})</h2><div class="vars"><div class="box"><small>Nilai</small><b style="font-size:1.6rem">${a.nilai}</b></div><div class="box"><small>Benar</small><b>${a.benar}</b></div><div class="box"><small>Salah</small><b>${a.salah}</b></div></div>
+<p>${a.nilai>=80?"Hebat! Pemahamanmu sudah kuat.":a.nilai>=60?"Bagus, pelajari lagi bagian yang salah.":"Ayo ulangi materinya, lalu coba lagi."}</p>
+<h3>Pembahasan</h3>${Q.map((q,i)=>{const ok=a.jawaban[i]===q[2];return`<div class="info"><b>${i+1}. ${ok?"✅":"❌"}</b> ${E(q[0])}<br>Jawabanmu: ${E(q[1][a.jawaban[i]])}${ok?"":`<br>Jawaban benar: <b>${E(q[1][q[2]])}</b>`}<br><i>${E(q[3])}</i></div>`}).join("")}
+<button onclick="S.sub=false;S.ans=[];M4()">🔁 Coba Lagi</button><button class="p" onclick="go(4)">Lanjut ke Refleksi ➜</button> <button onclick="csvSiswa()">⬇ Unduh CSV hasilku</button><h3>Kirim ke Google Form</h3><small>Disarankan dikirim setelah mengisi refleksi agar datanya lengkap.</small><br>${gfLink()}</div>`}
+// ---------- Menu 5 ----------
+function M5(){if(S.ref&&S.ref.ok)return thanks();
+const rd=(n,o)=>o.map(x=>`<label style="display:block;margin:4px 0"><input type="radio" name="${n}" value="${x}"> ${x}</label>`).join("");
+$("app").innerHTML=`<div class="card"><h2>📝 Refleksi Pembelajaran</h2><h3>1. Bagaimana perasaanmu setelah belajar?</h3>${rd("p",["Senang","Biasa saja","Masih bingung"])}<h3>2. Seberapa baik kamu memahami materi?</h3>${rd("u",["Sangat paham","Cukup paham","Perlu belajar lagi"])}
+<h3>3. Hal paling menarik yang kamu pelajari?</h3><textarea id="t1"></textarea><h3>4. Bagian yang masih sulit?</h3><textarea id="t2"></textarea><h3>5. Ingin belajar apa lagi?</h3><textarea id="t3"></textarea>
+<div class="fb no" id="er"></div><button class="p" id="kr">Kirim Refleksi</button></div>`;
+$("kr").onclick=async()=>{if(S.busy)return;const p=document.querySelector("input[name=p]:checked"),u=document.querySelector("input[name=u]:checked");if(!p||!u){$("er").textContent="Jawab pertanyaan 1 dan 2 dulu.";return}
+S.busy=true;$("kr").disabled=true;S.ref={perasaan:p.value,paham:u.value,menarik:$("t1").value.trim(),sulit:$("t2").value.trim(),lanjut:$("t3").value.trim(),waktu:new Date().toISOString(),ok:false};
+const ok=await save();S.busy=false;if(ok){S.ref.ok=true;thanks()}else{S.ref.ok=false;$("kr").disabled=false;$("er").innerHTML="Data belum tersimpan. "+(DB?"Klik Kirim Refleksi lagi untuk mengirim ulang.":"Penyimpanan tidak aktif; unduh CSV di bawah dan kirim ke gurumu.")+` <button onclick="csvSiswa()">⬇ Unduh CSV</button>`}}}
+function thanks(){const b=Math.max(0,...S.att.map(a=>a.nilai));$("app").innerHTML=`<div class="card"><h1>Terima kasih, ${E(S.nama)}! 🌟</h1><p>Ringkasan belajarmu:</p><ul><li>Submateri dipelajari: 4</li><li>Percobaan latihan: ${S.att.length}</li><li>Nilai terbaik: <b>${S.att.length?b:"-"}</b></li><li>Pemahaman: ${E(S.ref.paham)}</li></ul><button onclick="csvSiswa()">⬇ Unduh CSV hasilku</button><h3>Langkah terakhir</h3>${gfLink()}</div>`}
+// ---------- Google Form (tautan terisi otomatis) ----------
+const GF="https://docs.google.com/forms/d/e/1FAIpQLSejOB3XySCipfvnBwEBWLtGDhTdoYgAs9GycqbBk3yMVt5tzw/viewform?usp=pp_url";
+const GE={sid:"440915706",nama:"331253029",kelas:"1952525687",no:"1321282497",benar:"527857178",salah:"1991541245",nilai:"2104812980",durasi:"1684091115",rasa:"808077791",paham:"1026007582",menarik:"850251142",sulit:"201949431",lanjut:"2111574082"};
+function gfLink(){const a=S.att[S.att.length-1]||{},r=S.ref||{},v={sid:S.sid,nama:S.nama,kelas:S.kelas,no:a.no,benar:a.benar,salah:a.salah,nilai:a.nilai,durasi:a.durasi,rasa:r.perasaan,paham:r.paham,menarik:r.menarik,sulit:r.sulit,lanjut:r.lanjut};
+const u=GF+Object.keys(GE).map(k=>"&entry."+GE[k]+"="+encodeURIComponent(v[k]==null?"":v[k])).join("");
+return `<a href="${u}" target="_blank" rel="noopener" style="display:inline-block;padding:11px 16px;border-radius:12px;background:var(--ac);color:#fff;text-decoration:none;margin:3px">📤 Kirim ke Google Form</a><div class="fb" style="font-weight:400">Formulir akan terbuka dengan data terisi. <b>Tekan tombol Kirim di formulir</b> agar tercatat.</div>`}
+// ---------- CSV ----------
+const csvc=v=>'"'+String(v??"").replace(/"/g,'""')+'"',toCsv=r=>"\ufeff"+r.map(x=>x.map(csvc).join(",")).join("\r\n");
+async function dl(name,rows){if(!DL){alert("Unduhan tidak tersedia pada tampilan ini.");return}try{await DL.save({filename:name,data:toCsv(rows)})}catch(e){}}
+function csvSiswa(){const r=[["ID sesi","Nama","Kelas","Materi","Percobaan","Jumlah soal","Benar","Salah","Nilai","Waktu kumpul","Durasi (detik)","Perasaan","Pemahaman","Menarik","Sulit","Ingin dipelajari"]];
+S.att.forEach(a=>r.push([S.sid,S.nama,S.kelas,G.materi,a.no,a.jumlah,a.benar,a.salah,a.nilai,a.waktu,a.durasi,S.ref?.perasaan,S.ref?.paham,S.ref?.menarik,S.ref?.sulit,S.ref?.lanjut]));dl("hasil-"+S.nama.replace(/\s+/g,"_")+".csv",r)}
+// ---------- Rekap guru ----------
+async function rekap(){$("app").innerHTML=`<div class="card"><h2>👩‍🏫 Rekap Guru</h2><div id="rk">Memuat…</div></div>`;
+if(!DB){$("rk").textContent="Database tidak tersedia pada tampilan ini.";return}
+let rows;try{rows=(await DB.collection("sesi").get()).docs.map(d=>d.data()).filter(Boolean)}catch(e){$("rk").textContent="Gagal memuat data: "+((e&&e.code)||"error");return}
+const best=r=>Math.max(0,...(r.attempts||[]).map(a=>a.nilai)),dn=rows.filter(r=>(r.attempts||[]).length),sc=dn.map(best),avg=sc.length?sc.reduce((x,y)=>x+y,0)/sc.length:0;
+const dist={};rows.forEach(r=>{const k=r.refleksi&&r.refleksi.paham;if(k)dist[k]=(dist[k]||0)+1});
+const need=rows.filter(r=>(r.attempts||[]).length&&best(r)<70||(r.refleksi&&r.refleksi.paham==="Perlu belajar lagi"));
+$("rk").innerHTML=`<div class="vars"><div class="box"><small>Siswa tercatat</small><b>${rows.length}</b></div><div class="box"><small>Selesai latihan</small><b>${dn.length} (${rows.length?Math.round(dn.length/rows.length*100):0}%)</b></div><div class="box"><small>Rata-rata</small><b>${avg.toFixed(1)}</b></div><div class="box"><small>Tertinggi / terendah</small><b>${sc.length?Math.max(...sc)+" / "+Math.min(...sc):"-"}</b></div></div>
+<h3>Tingkat pemahaman</h3><p>${Object.keys(dist).map(k=>k+": "+dist[k]).join(" · ")||"Belum ada refleksi."}</p><h3>Perlu pendampingan (nilai &lt; 70 atau merasa perlu belajar lagi)</h3><p>${need.map(r=>E(r.nama)+" ("+E(r.kelas)+")").join(", ")||"Tidak ada."}</p>
+<table><tr><th>Nama</th><th>Kelas</th><th>Status</th><th>Terbaik</th></tr>${rows.map(r=>`<tr><td>${E(r.nama)}</td><td>${E(r.kelas)}</td><td>${E(r.status)}</td><td>${(r.attempts||[]).length?best(r):"-"}</td></tr>`).join("")}</table>
+<p><button onclick="rekap()">🔄 Muat ulang</button><button id="c1">⬇ CSV Identitas</button><button id="c2">⬇ CSV Hasil</button><button id="c3">⬇ CSV Refleksi</button></p>`;
+$("c1").onclick=()=>dl("sheet1-identitas.csv",[["ID sesi","Waktu","Guru","Mapel","Materi","Nama","Kelas","Waktu mulai","Status"],...rows.map(r=>[r.sid,r.diperbarui,r.guru,r.mapel,r.materi,r.nama,r.kelas,r.mulai,r.status])]);
+$("c2").onclick=()=>dl("sheet2-hasil.csv",[["ID sesi","Nama","Kelas","Materi","Percobaan","Jumlah soal","Benar","Salah","Nilai","Waktu kumpul","Durasi (detik)"],...rows.flatMap(r=>(r.attempts||[]).map(a=>[r.sid,r.nama,r.kelas,r.materi,a.no,a.jumlah,a.benar,a.salah,a.nilai,a.waktu,a.durasi]))]);
+$("c3").onclick=()=>dl("sheet3-refleksi.csv",[["ID sesi","Nama","Kelas","Materi","Perasaan","Pemahaman","Menarik","Sulit","Ingin dipelajari","Waktu"],...rows.filter(r=>r.refleksi).map(r=>[r.sid,r.nama,r.kelas,r.materi,r.refleksi.perasaan,r.refleksi.paham,r.refleksi.menarik,r.refleksi.sulit,r.refleksi.lanjut,r.refleksi.waktu])])}
+nav();render();init();
+</script></body></html>
